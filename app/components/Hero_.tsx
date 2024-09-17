@@ -112,12 +112,12 @@ const LayerOne_ = () => {
           className={`min-w-[50px] h-[70px] flex flex-col justify-center items-start`}
         >
           <p className={`text-[37px] font-medium fira-sans-semibold mb-[-2px]`}>
-            Mercedes-Benz
+            Mclaren
           </p>
           <p
             className={`text-[15px] font-normal fira-sans-semibold text-[#f8f9fd]/400 opacity-40`}
           >
-            AMG 63 S Coupe - 2023
+            600 LT Spider - 2020
           </p>
           <div
             className={`min-w-[50px] min-h-[50px] flex flex-col justify-center items-start absolute top-[133px]`}

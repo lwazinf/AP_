@@ -2,24 +2,41 @@
 
 import React, { Suspense, useEffect, useRef } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, Center } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera, Center, Environment } from "@react-three/drei";
 import { Box3, Vector3 } from "three";
 import Model_ from "./utils/stage_/Model_";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+
+const GlassMaterial = () => {
+  return (
+    <mesh>
+      <meshPhysicalMaterial
+        transmission={1} // Enables glass effect (refraction)
+        transparent
+        roughness={0} // Smooth glass
+        thickness={1}  // Thickness of the material
+        envMapIntensity={1} // Strength of the environment map
+        metalness={0} // Non-metallic glass
+        // @ts-expect-error - needed
+        roughness={0.05} // Slight roughness for realism
+      />
+    </mesh>
+  );
+};
 
 // This component adjusts the camera to fit the model
-// @ts-expect-error - no type
+// @ts-expect-error - No type
 const CameraAdjuster = ({ modelRef }) => {
   const { camera } = useThree();
 
   useEffect(() => {
-    // Ensure the model has been loaded
     if (modelRef.current) {
       const box = new Box3().setFromObject(modelRef.current);
       const size = box.getSize(new Vector3());
       const center = box.getCenter(new Vector3());
 
       const maxDim = Math.max(size.x, size.y, size.z);
-      // @ts-expect-error - FOV unknown
+      // @ts-expect-error - FOV error
       const fovRadians = (camera.fov * Math.PI) / 180;
       const cameraZ = Math.abs(maxDim / (2 * Math.tan(fovRadians / 2)));
 
@@ -43,7 +60,7 @@ const Stage_ = () => {
         <ambientLight intensity={0.5} />
         <directionalLight
           castShadow
-          position={[2.5, 8, 5]}
+          position={[10, 10, 10]}
           intensity={1.5}
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
@@ -58,11 +75,16 @@ const Stage_ = () => {
           maxAzimuthAngle={Infinity}
         />
         <Suspense fallback={null}>
+          <GlassMaterial />
+          <Environment preset="park" />
           <Center>
             {/* @ts-expect-error - ref */}
             <Model_ ref={modelRef} />
           </Center>
         </Suspense>
+        <EffectComposer>
+          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+        </EffectComposer>
         <CameraAdjuster modelRef={modelRef} />
       </Canvas>
 
