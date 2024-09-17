@@ -13,11 +13,10 @@ const GlassMaterial = () => {
       <meshPhysicalMaterial
         transmission={1} // Enables glass effect (refraction)
         transparent
-        roughness={0} // Smooth glass
+        // roughness={0} // Smooth glass
         thickness={1}  // Thickness of the material
         envMapIntensity={1} // Strength of the environment map
         metalness={0} // Non-metallic glass
-        // @ts-expect-error - needed
         roughness={0.05} // Slight roughness for realism
       />
     </mesh>
