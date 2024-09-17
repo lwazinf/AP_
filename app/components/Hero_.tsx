@@ -11,15 +11,26 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Stage_ from "./Stage_";
 
 const Hero_ = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100); // Adjust this delay as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div
       className={`w-full min-h-screen flex flex-col justify-center items-center`}
     >
-      <LayerTwo_ />
+      <LayerTwo_ isLoaded={isLoaded} />
       <LayerOne_ />
     </div>
   );
@@ -290,11 +301,13 @@ const Wrap_ = ({ index_, obj_ }: Wrap_Props) => {
 };
 
 
-const LayerTwo_ = () => {
+const LayerTwo_ = ({ isLoaded }) => {
     return (
-        <div className={`w-full min-h-screen flex flex-col justify-center items-center absolute top-0 overflow-hidden`}>
-            <img src={`/assets/images/McLogo.png`} className={`scale-[.5] opacity-5 relative bottom-[180px] left-[150px]`} />
-            <Stage_ />
-        </div>
+      <div className={`w-full min-h-screen flex flex-col justify-center items-center absolute top-0 overflow-hidden`}>
+      <img src={`/assets/images/McLogo.png`} className={`scale-[.5] opacity-5 relative bottom-[180px] left-[150px]`} />
+      {isLoaded && <div className={`absolute top-0 w-full h-full z-[1]`}>
+      <Stage_ />
+      </div>}
+    </div>
     )
 }
