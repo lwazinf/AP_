@@ -18,8 +18,9 @@ const CameraAdjuster = () => {
       const center = box.getCenter(new Vector3());
 
       const maxDim = Math.max(size.x, size.y, size.z);
+      // @ts-expect-error - Fov unextepcted
       const fov = camera.fov * (Math.PI / 180);
-      let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
+      const cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
 
       // Set camera to look at center of the model
       camera.position.set(-cameraZ * 1.5, 0, 0); // Changed to position camera on the left
