@@ -7,6 +7,7 @@ import { Box3, Vector3 } from "three";
 import Model_ from "./utils/stage_/Model_";
 
 // This component adjusts the camera to fit the model
+// @ts-expect-error - no type
 const CameraAdjuster = ({ modelRef }) => {
   const { camera } = useThree();
 
@@ -18,6 +19,7 @@ const CameraAdjuster = ({ modelRef }) => {
       const center = box.getCenter(new Vector3());
 
       const maxDim = Math.max(size.x, size.y, size.z);
+      // @ts-expect-error - FOV unknown
       const fovRadians = (camera.fov * Math.PI) / 180;
       const cameraZ = Math.abs(maxDim / (2 * Math.tan(fovRadians / 2)));
 
@@ -57,6 +59,7 @@ const Stage_ = () => {
         />
         <Suspense fallback={null}>
           <Center>
+            {/* @ts-expect-error - ref */}
             <Model_ ref={modelRef} />
           </Center>
         </Suspense>
@@ -64,7 +67,9 @@ const Stage_ = () => {
       </Canvas>
 
       {/* HTML elements such as div go outside of Canvas */}
-      <div className="absolute bottom-0 left-0 text-white">Loading model...</div>
+      <div className="absolute bottom-0 left-0 text-white">
+        Loading model...
+      </div>
     </div>
   );
 };

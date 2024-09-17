@@ -300,7 +300,7 @@ const Wrap_ = ({ index_, obj_ }: Wrap_Props) => {
   );
 };
 
-
+// @ts-expect-error - no type
 const LayerTwo_ = ({ isLoaded }) => {
     return (
       <div className={`w-full min-h-screen flex flex-col justify-center items-center absolute top-0 overflow-hidden`}>
