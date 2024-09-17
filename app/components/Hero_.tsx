@@ -12,6 +12,7 @@ import {
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import Stage_ from "./Stage_";
 
 const Hero_ = () => {
   return (
@@ -34,7 +35,7 @@ const LayerOne_ = () => {
       className={`w-full min-h-screen flex flex-col justify-start items-center`}
     >
       <div
-        className={`w-full min-h-[80px] flex flex-row justify-center items-center px-4`}
+        className={`w-full min-h-[80px] flex flex-row justify-center items-center px-4 z-[1]`}
       >
         <img
           className={`object-cover h-[60px] mr-5`}
@@ -131,7 +132,7 @@ const LayerOne_ = () => {
               )
             )}
             <div
-              className={`w-[1250px] min-h-2 pt-[35px] pl-[64px] flex flex-row`}
+              className={`w-[1250px] min-h-2 pt-[35px] pl-[64px] flex flex-row z-[2]`}
             >
               <p
                 className={`text-[21px] font-bold fira-sans-semibold mb-[-2px] min-w-2`}
@@ -169,7 +170,7 @@ const LayerOne_ = () => {
               className={`w-[1250px] min-h-2 pt-[10px] pl-[0px] flex flex-row`}
             >
               <div
-                className={`w-[48px] min-h-[48px] relative top-[18px] hover:bg-gray-200 cursor-pointer transition-all duration-200 flex flex-col justify-center items-center`}
+                className={`w-[48px] min-h-[48px] relative top-[18px] transition-all duration-200 flex flex-col justify-center items-center`}
               >
                 <div
                   className={`w-[48px] h-[48px] bg-[#f8f9fd]/60 relative hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center`}
@@ -291,9 +292,9 @@ const Wrap_ = ({ index_, obj_ }: Wrap_Props) => {
 
 const LayerTwo_ = () => {
     return (
-        <div className={`w-full min-h-screen flex flex-col justify-center items-center absolute top-0`}>
+        <div className={`w-full min-h-screen flex flex-col justify-center items-center absolute top-0 overflow-hidden`}>
             <img src={`/assets/images/McLogo.png`} className={`scale-[.5] opacity-5 relative bottom-[180px] left-[150px]`} />
-
+            <Stage_ />
         </div>
     )
 }

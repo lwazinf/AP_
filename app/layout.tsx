@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Auto Panache",
-  description: "",
+  title: "Auto Panache - Les Classiques",
+  description: "Les Classiques",
 };
 
 export default function RootLayout({
