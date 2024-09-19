@@ -28,19 +28,10 @@ const Carousel_ = () => {
   };
 
   return (
-    <div className="w-[1250px] min-h-2 pt-[10px] pl-[0px] flex flex-row">
-      <div className="w-[48px] min-h-[48px] relative top-[18px] transition-all duration-200 flex flex-col justify-center items-center">
+    <div className="w-[1250px] min-h-2 pt-[10px] flex flex-row items-center justify-center">
+      <div className="min-w-[48px] h-[48px] transition-all duration-200 flex flex-row justify-center items-center absolute top-[-30px] right-6">
         <div
-          className="w-[48px] h-[48px] z-[2] bg-[#f8f9fd]/60 relative hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center"
-          onClick={scrollRight}
-        >
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            className="scale-[0.9] opacity-30"
-          />
-        </div>
-        <div
-          className="w-[48px] h-[48px] z-[2] bg-[#f8f9fd]/60 relative top-1 hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center"
+          className="w-[38px] h-[38px] z-[2] bg-[#f8f9fd]/60 relative hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center"
           onClick={scrollLeft}
         >
           <FontAwesomeIcon
@@ -48,10 +39,19 @@ const Carousel_ = () => {
             className="scale-[0.9] opacity-60"
           />
         </div>
+        <div
+          className="w-[38px] h-[38px] z-[2] bg-[#f8f9fd]/60 relative left-1 hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center"
+          onClick={scrollRight}
+        >
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            className="scale-[0.9] opacity-30"
+          />
+        </div>
       </div>
 
-      <div className="min-w-[275px] h-[145px] ml-6 transition-all duration-200 flex flex-row justify-start items-center mb-[10px] overflow-hidden">
-        {items.map((obj_, index_) => (
+      <div className="min-w-[275px] h-[145px] transition-all duration-200 flex flex-row justify-center items-center mb-[10px] overflow-hidden">
+        {items.slice(0, 5).map((obj_, index_) => (
           <div
             className={`${obj_.dims} relative overflow-hidden h-[145px] mr-3 rounded-[25px] bg-[#f8f9fd]/60 hover:bg-gray-200 border-solid border-[1px] border-gray-200 cursor-pointer transition-all duration-200 z-[2] flex flex-col justify-center items-center`}
             key={index_}

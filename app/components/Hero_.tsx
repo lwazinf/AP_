@@ -1,8 +1,6 @@
 "use client";
 
 import {
-  faArrowLeft,
-  faArrowRight,
   faBars,
   faCertificate,
   faComments,
@@ -66,31 +64,26 @@ const LayerOne_ = () => {
         <div
           className={`min-w-[50px] min-h-[50px] mt-2 flex flex-row justify-center items-center ml-4 mr-6`}
         >
-          {[
-            "Models",
-            "Services",
-            "Experience",
-            "Shop",
-            "Purchase",
-            "Customize",
-          ].map((obj_, index_) => (
-            <div
-              className={`w-[120px] h-[45px] rounded-[40px] ${
-                index_ == 0
-                  ? "bg-black hover:bg-gray-700"
-                  : "bg-[#f8f9fd]/60 hover:bg-gray-200 border-solid border-[1px] border-gray-200"
-              } cursor-pointer transition-all duration-200  flex flex-col justify-center items-center ml-2`}
-              key={index_}
-            >
-              <p
-                className={`${
-                  index_ == 0 ? "text-white" : "text-black"
-                } text-[14px] font-normal fira-sans-regular`}
+          {["Models", "Services", "Experience", "Customize", "About Us"].map(
+            (obj_, index_) => (
+              <div
+                className={`w-[120px] h-[45px] rounded-[40px] ${
+                  index_ == 0
+                    ? "bg-black hover:bg-gray-700"
+                    : "bg-[#f8f9fd]/60 hover:bg-gray-200 border-solid border-[1px] border-gray-200"
+                } cursor-pointer transition-all duration-200  flex flex-col justify-center items-center ml-2`}
+                key={index_}
               >
-                {obj_}
-              </p>
-            </div>
-          ))}
+                <p
+                  className={`${
+                    index_ == 0 ? "text-white" : "text-black"
+                  } text-[14px] font-normal fira-sans-regular`}
+                >
+                  {obj_}
+                </p>
+              </div>
+            )
+          )}
         </div>
         <div
           className={`w-[50px] h-[50px] bg-[#f8f9fd]/60 hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] mt-2 flex flex-col justify-center items-center mr-1`}
@@ -179,7 +172,7 @@ const LayerOne_ = () => {
                 />
               </div>
               <div
-                className={`ml-auto flex flex-row justify-center items-center min-w-2 pr-5`}
+                className={`ml-auto flex flex-row justify-center items-center min-w-2 pr-5  relative`}
               >
                 <p className={`text-[21px] font-[400] fira-sans-regular`}>
                   Vehicle Wraps
@@ -195,12 +188,17 @@ const LayerOne_ = () => {
                     <Wrap_ obj_={obj_} index_={index_} key={index_} />
                   ))}
                 </div>
+                <div
+                  className={`absolute right-5 top-[-35px] px-4 py-2 flex flex-col justify-center items-center rounded-[4px] bg-red-600 hover:bg-black transition-all duration-200 text-white text-[15px] cursor-pointer font-bold`}
+                >
+                  Customize and Purchase
+                </div>
               </div>
             </div>
             <div
-              className={`w-[1250px] min-h-2 pt-[10px] pl-[0px] flex flex-row`}
+              className={`w-[1250px] min-h-2 pt-[10px] pl-[0px] flex flex-row relative`}
             >
-             {/* <Carousel_/> */}
+              <Carousel_ />
             </div>
           </div>
         </div>
