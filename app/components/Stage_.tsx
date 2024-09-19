@@ -13,7 +13,7 @@ const GlassMaterial = () => {
       <meshPhysicalMaterial
         transmission={1} // Enables glass effect (refraction)
         transparent
-        // roughness={0} // Smooth glass
+        roughness={0} // Smooth glass
         thickness={1}  // Thickness of the material
         envMapIntensity={1} // Strength of the environment map
         metalness={0} // Non-metallic glass
@@ -56,7 +56,7 @@ const Stage_ = () => {
       {/* All 3D content must be inside Canvas */}
       <Canvas shadows>
         <PerspectiveCamera makeDefault position={[-9, 0, 9]} />
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.8} />
         <directionalLight
           castShadow
           position={[10, 10, 10]}
@@ -75,7 +75,7 @@ const Stage_ = () => {
         />
         <Suspense fallback={null}>
           <GlassMaterial />
-          <Environment preset="park" />
+          <Environment preset="dawn" environmentIntensity={0.15} />
           <Center>
             {/* @ts-expect-error - ref */}
             <Model_ ref={modelRef} />

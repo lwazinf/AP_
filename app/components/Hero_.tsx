@@ -13,6 +13,7 @@ import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleE
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import Stage_ from "./Stage_";
+import Carousel_ from "./utils/hero_/Carousel_";
 
 const Hero_ = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -122,28 +123,47 @@ const LayerOne_ = () => {
           <div
             className={`min-w-[50px] min-h-[50px] flex flex-col justify-center items-start absolute top-[133px]`}
           >
-            {["Performance", "Design", "Safety", "Luxury", "Multimedia"].map(
-              (obj_, index_) => (
-                <div
-                  className={`w-[120px] h-[46px] rounded-[40px] ${
-                    index_ == 1
-                      ? "bg-black hover:bg-gray-700"
-                      : "bg-[#f8f9fd]/60 hover:bg-gray-200 border-solid border-[1px] border-gray-200"
-                  } cursor-pointer transition-all duration-200  flex flex-col justify-center items-center mb-[10px]`}
-                  key={index_}
-                >
-                  <p
+            {[
+              {
+                name: "F430 Coupe",
+                img: "https://autopanache.co.za/wp-content/uploads/2024/03/land_rover_logo_icon_145809.png",
+              },
+              {
+                name: "600 LT Spider",
+                img: "https://autopanache.co.za/wp-content/uploads/2023/09/345345909.jpg",
+              },
+              {
+                name: "DB9",
+                img: "https://autopanache.co.za/wp-content/uploads/2023/09/53469769.jpg",
+              },
+              {
+                name: "GTR",
+                img: "https://autopanache.co.za/wp-content/uploads/2024/03/nissan_logo_icon_248364.png",
+              },
+              {
+                name: "911 Turbo",
+                img: "https://autopanache.co.za/wp-content/uploads/2023/09/98665756.jpg",
+              },
+            ].map((obj_, index_) => (
+              <div
+                className={`w-[120px] h-[80px] z-[2] rounded-[40px] cursor-pointer transition-all duration-200  flex flex-col justify-center items-center overflow-hidden scale-75`}
+                key={index_}
+              >
+                {/* <p
                     className={`${
                       index_ == 1 ? "text-white" : "text-black"
                     } text-[14px] font-normal fira-sans-regular`}
                   >
-                    {obj_}
-                  </p>
-                </div>
-              )
-            )}
+                    {obj_.name}
+                  </p> */}
+                <img
+                  className={`h-full object-cover hover:animate-pulse`}
+                  src={obj_.img}
+                />
+              </div>
+            ))}
             <div
-              className={`w-[1250px] min-h-2 pt-[35px] pl-[64px] flex flex-row z-[2]`}
+              className={`w-[1250px] min-h-2 mt-[55px] mb-[20px] pl-[64px] flex flex-row z-[2]`}
             >
               <p
                 className={`text-[21px] font-bold fira-sans-semibold mb-[-2px] min-w-2`}
@@ -180,42 +200,7 @@ const LayerOne_ = () => {
             <div
               className={`w-[1250px] min-h-2 pt-[10px] pl-[0px] flex flex-row`}
             >
-              <div
-                className={`w-[48px] min-h-[48px] relative top-[18px] transition-all duration-200 flex flex-col justify-center items-center`}
-              >
-                <div
-                  className={`w-[48px] h-[48px] bg-[#f8f9fd]/60 relative hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center`}
-                >
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className={`scale-[0.9] opacity-30`}
-                  />
-                </div>
-                <div
-                  className={`w-[48px] h-[48px] bg-[#f8f9fd]/60 relative top-1 hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center`}
-                >
-                  <FontAwesomeIcon
-                    icon={faArrowLeft}
-                    className={`scale-[0.9] opacity-60`}
-                  />
-                </div>
-              </div>
-              <div
-                className={`min-w-[275px] h-[145px] ml-6 transition-all duration-200  flex flex-row justify-start items-center mb-[10px]`}
-              >
-                {[
-            "min-w-[275px]",
-            "min-w-[216px]",
-            "min-w-[217px]",
-            "min-w-[196px]",
-            "min-w-[275px]",
-          ].map((obj_, index_) => (
-            <div
-                  className={`${obj_} h-[145px] mr-3 rounded-[25px] bg-[#f8f9fd]/60 hover:bg-gray-200 border-solid border-[1px] border-gray-200 cursor-pointer transition-all duration-200  flex flex-col justify-center items-center`}
-                  key={index_}
-                ></div>
-          ))}
-              </div>
+             {/* <Carousel_/> */}
             </div>
           </div>
         </div>
@@ -302,12 +287,19 @@ const Wrap_ = ({ index_, obj_ }: Wrap_Props) => {
 
 // @ts-expect-error - no type
 const LayerTwo_ = ({ isLoaded }) => {
-    return (
-      <div className={`w-full min-h-screen flex flex-col justify-center items-center absolute top-0 overflow-hidden`}>
-      <img src={`/assets/images/McLogo.png`} className={`scale-[.5] opacity-5 relative bottom-[180px] left-[150px]`} />
-      {isLoaded && <div className={`absolute top-0 w-full h-full z-[1]`}>
-      <Stage_ />
-      </div>}
+  return (
+    <div
+      className={`w-full min-h-screen flex flex-col justify-center items-center absolute top-0 overflow-hidden`}
+    >
+      <img
+        src={`/assets/images/McLogo.png`}
+        className={`scale-[.5] opacity-5 relative bottom-[180px] left-[150px]`}
+      />
+      {isLoaded && (
+        <div className={`absolute top-0 w-full h-full z-[1]`}>
+          <Stage_ />
+        </div>
+      )}
     </div>
-    )
-}
+  );
+};
