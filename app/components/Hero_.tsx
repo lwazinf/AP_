@@ -4,6 +4,7 @@ import {
   faBars,
   faCertificate,
   faComments,
+  faGear,
   faQrcode,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import Stage_ from "./Stage_";
 import Carousel_ from "./utils/hero_/Carousel_";
+import { faGears } from "@fortawesome/free-solid-svg-icons/faGears";
 
 const Hero_ = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -68,7 +70,7 @@ const LayerOne_ = () => {
             (obj_, index_) => (
               <div
                 className={`w-[120px] h-[45px] rounded-[40px] ${
-                  index_ == 0
+                  index_ == 3
                     ? "bg-black hover:bg-gray-700"
                     : "bg-[#f8f9fd]/60 hover:bg-gray-200 border-solid border-[1px] border-gray-200"
                 } cursor-pointer transition-all duration-200  flex flex-col justify-center items-center ml-2`}
@@ -76,7 +78,7 @@ const LayerOne_ = () => {
               >
                 <p
                   className={`${
-                    index_ == 0 ? "text-white" : "text-black"
+                    index_ == 3 ? "text-white" : "text-black"
                   } text-[14px] font-normal fira-sans-regular`}
                 >
                   {obj_}
@@ -105,11 +107,11 @@ const LayerOne_ = () => {
         <div
           className={`min-w-[50px] h-[70px] flex flex-col justify-center items-start`}
         >
-          <p className={`text-[37px] font-medium fira-sans-semibold mb-[-2px]`}>
+          <p className={`text-[40px] font-black fira-sans-bold mb-[-10px]`}>
             Mclaren
           </p>
           <p
-            className={`text-[15px] font-normal fira-sans-semibold text-[#f8f9fd]/400 opacity-40`}
+            className={`text-[15px] font-normal text-red fira-sans-semibold text-[#f8f9fd]/400 opacity-40`}
           >
             600 LT Spider - 2020
           </p>
@@ -156,15 +158,15 @@ const LayerOne_ = () => {
               </div>
             ))}
             <div
-              className={`w-[1250px] min-h-2 mt-[55px] mb-[20px] pl-[64px] flex flex-row z-[2]`}
+              className={`w-[1250px] min-h-2 mt-[55px] mb-[30px] pl-[64px] flex flex-row z-[2]`}
             >
               <p
-                className={`text-[21px] font-bold fira-sans-semibold mb-[-2px] min-w-2`}
+                className={`text-[31px] font-black fira-sans-semibold min-w-2`}
               >
                 Featured This Month
               </p>
               <div
-                className={`w-[48px] h-[48px] bg-[#f8f9fd]/60 relative left-[15px] bottom-2 hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center`}
+                className={`w-[48px] h-[48px] mr-auto bg-[#f8f9fd]/60 relative left-[15px] bottom-0 hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[50%] flex flex-col justify-center items-center`}
               >
                 <FontAwesomeIcon
                   icon={faCircleExclamation}
@@ -172,9 +174,9 @@ const LayerOne_ = () => {
                 />
               </div>
               <div
-                className={`ml-auto flex flex-row justify-center items-center min-w-2 pr-5  relative`}
+                className={`ml-auto flex flex-row justify-center items-center min-w-[150px] relative`}
               >
-                <p className={`text-[21px] font-[400] fira-sans-regular`}>
+                {/* <p className={`text-[21px] font-[400] fira-sans-regular`}>
                   Vehicle Wraps
                 </p>
                 <div className={`flex flex-row justify-center items-center`}>
@@ -187,9 +189,9 @@ const LayerOne_ = () => {
                   ].map((obj_, index_) => (
                     <Wrap_ obj_={obj_} index_={index_} key={index_} />
                   ))}
-                </div>
+                </div> */}
                 <div
-                  className={`absolute right-5 top-[-35px] px-4 py-2 flex flex-col justify-center items-center rounded-[4px] bg-red-600 hover:bg-black transition-all duration-200 text-white text-[15px] cursor-pointer font-bold`}
+                  className={`px-4 py-2 max-h-10 min-w-2 flex flex-col justify-center items-center rounded-[4px] bg-red-600 hover:bg-black transition-all duration-200 text-white text-[15px] cursor-pointer font-bold`}
                 >
                   Customize and Purchase
                 </div>
@@ -218,8 +220,8 @@ const LayerOne_ = () => {
             className={`w-[233px] min-h-[94px] bg-[#f8f9fd]/60 relative top-[21px] hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[28px] flex flex-col justify-center items-center p-4`}
           >
             <div className={`w-full h-full text-[12px] text-black/50`}>
-              A variety of warranty options are available for your new or
-              Certified Pre-Owned (CPO) Mercedes Benz
+              Your customisation will be completed by our in-house professionals
+              before collection, this may add time to your order.
             </div>
           </div>
         </div>
@@ -231,7 +233,7 @@ const LayerOne_ = () => {
             className={`w-[45px] h-[45px] bg-white/20 relative top-[10px] left-[15px] mb-[-8px] transition-all duration-200 rounded-[50%] flex flex-col justify-center items-center`}
           >
             <FontAwesomeIcon
-              icon={faCertificate}
+              icon={faGear}
               className={`scale-[0.9] text-white/80`}
             />
           </div>
@@ -244,9 +246,39 @@ const LayerOne_ = () => {
             className={`w-[233px] min-h-[94px] bg-[#fbfbfe] relative top-[30px] hover:bg-gray-200 cursor-pointer transition-all duration-200 border-solid border-[1px] border-gray-200 rounded-[28px] flex flex-col justify-center items-center p-4`}
           >
             <div className={`w-full h-full text-[12px] text-black/50`}>
-              A variety of warranty options are available for your new or
-              Certified Pre-Owned (CPO) Mercedes Benz
+              Experience the raw might of the McLaren 600LT Spider. With 592 bhp
+              and 0-60 mph in just 2.8 seconds, this supercar delivers
+              exhilarating performance that pushes the boundaries of automotive
+              engineering.
             </div>
+          </div>
+          <div
+            className={`min-w-[50px] min-h-[50px] flex flex-col justify-center items-start absolute opacity-50 hover:opacity-100 z-[3] transition-all duration-200 right-0 bottom-[-300px]`}
+          >
+            {[
+              {
+                wrap: "bg-red-600",
+              },
+              {
+                wrap: "bg-[#ff8000]",
+              },
+              {
+                wrap: "bg-blue-300",
+              },
+              {
+                wrap: "bg-green-800",
+              },
+              {
+                wrap: "bg-pink-600",
+              },
+            ].map((obj_, index_) => (
+              <div
+                className={`w-[80px] h-[40px] z-[2] ${obj_.wrap} ${index_ == 1 && "animate-pulse scale-[0.85]"} hover:scale-[0.85] rounded-[6px] cursor-pointer transition-all duration-200  flex flex-col justify-center items-center overflow-hidden scale-75`}
+                key={index_}
+              >
+                
+              </div>
+            ))}
           </div>
         </div>
       </div>
